@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nirnaya AI — Decision Intelligence Platform | Qenovra AI</title>
+  <meta name="description" content="The Internet Gives Information. Nirnaya Gives Decisions. Answers less. Decides more. Built by Qenovra AI — India ka AI. Bharat ka Stack." />
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Canvas Confetti for Celebration -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: "#FAFAF7",
+            section: "#F5F5F1",
+            card: "#FFFFFF",
+            primary: "#111827",
+            secondary: "#6B7280",
+            accent: "#2563EB",
+            success: "#059669",
+            border: "#E5E7EB",
+          },
+          fontFamily: {
+            sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
+          },
+          boxShadow: {
+            subtle: "0 1px 2px 0 rgba(0, 0, 0, 0.03)",
+            card: "0 4px 20px -2px rgba(0, 0, 0, 0.04), 0 2px 6px -1px rgba(0, 0, 0, 0.02)",
+            "card-hover": "0 12px 32px -4px rgba(0, 0, 0, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.03)",
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #FAFAF7;
+      color: #111827;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection {
+      background-color: #2563EB;
+      color: #FFFFFF;
+    }
+    .paper-pattern {
+      background-image: radial-gradient(rgba(17, 24, 39, 0.04) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+    .glass-nav {
+      background: rgba(250, 250, 247, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.85);
+    }
+    .tracking-tight-title {
+      letter-spacing: -0.035em;
+    }
+    #ambient-light {
+      pointer-events: none;
+      position: fixed;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.06) 0%, rgba(255, 255, 255, 0) 70%);
+      filter: blur(80px);
+      transform: translate(-50%, -50%);
+      transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 0;
+    }
+  </style>
+</head>
+
+<body class="relative min-h-screen">
+  <!-- Mouse-following ambient glow -->
+  <div id="ambient-light" aria-hidden="true"></div>
+
+  <!-- Ambient background fields -->
+  <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute -top-[15%] left-[20%] h-[600px] w-[600px] rounded-full opacity-40 blur-[130px]"
+         style="background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, rgba(245, 245, 241, 0) 70%);"></div>
+    <div class="absolute top-[40%] -right-[10%] h-[650px] w-[650px] rounded-full opacity-35 blur-[140px]"
+         style="background: radial-gradient(circle, rgba(217, 230, 255, 0.4) 0%, rgba(250, 250, 247, 0) 70%);"></div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <header class="glass-nav fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 flex items-center justify-between">
+      <!-- Left: Logo & Wordmark -->
+      <a href="#" class="group flex items-center gap-2.5 text-primary">
+        <svg width="30" height="30" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="shrink-0 transition-transform duration-300 group-hover:scale-105">
+          <path d="M8 8 L28 36" stroke="#111827" stroke-width="2.5" stroke-linecap="round" opacity="0.25" />
+          <path d="M8 15 L28 36" stroke="#111827" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
+          <path d="M8 22 L28 36" stroke="#111827" stroke-width="2.5" stroke-linecap="round" opacity="0.6" />
+          <path d="M8 29 L28 36" stroke="#111827" stroke-width="2.5" stroke-linecap="round" opacity="0.8" />
+          <path d="M8 36 L28 36" stroke="#111827" stroke-width="2.5" stroke-linecap="round" />
+          <path d="M8 43 L28 36" stroke="#111827" stroke-width="2.5" stroke-linecap="round" opacity="0.7" />
+          <path d="M10 8 L32 38" stroke="#2563EB" stroke-width="3.2" stroke-linecap="round" />
+          <rect x="32" y="8" width="7" height="32" rx="2" fill="#111827" />
+          <circle cx="32" cy="38" r="2.8" fill="#2563EB" />
+        </svg>
+        <span class="font-semibold tracking-tight text-lg text-primary">Nirnaya AI</span>
+        <span class="hidden sm:inline-flex items-center text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-border/60 text-secondary font-medium">
+          Qenovra AI
+        </span>
+      </a>
+
+      <!-- Center Links -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#philosophy" class="text-sm text-secondary hover:text-primary transition-colors font-medium">Philosophy</a>
+        <a href="#how-it-works" class="text-sm text-secondary hover:text-primary transition-colors font-medium">How It Works</a>
+        <a href="#audience" class="text-sm text-secondary hover:text-primary transition-colors font-medium">Who It's For</a>
+        <a href="#vision" class="text-sm text-secondary hover:text-primary transition-colors font-medium">Vision</a>
+        <a href="#faq" class="text-sm text-secondary hover:text-primary transition-colors font-medium">FAQ</a>
+      </nav>
+
+      <!-- Right: CTA -->
+      <div class="flex items-center gap-4">
+        <a href="#waitlist" class="group inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-full bg-primary text-white hover:bg-black transition-all duration-200 shadow-sm">
+          <span>Join Waitlist</span>
+          <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10 w-full pt-16">
+    <!-- SECTION 1: HERO -->
+    <section class="min-h-[92vh] flex flex-col justify-center items-center px-6 sm:px-8 pt-24 pb-16 text-center">
+      <!-- Badge -->
+      <div class="mb-8 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-border shadow-subtle">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="text-xs font-medium text-secondary tracking-wide uppercase">Introducing Decision Intelligence</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tight-title text-primary leading-[1.08] max-w-4xl mx-auto">
+        The Internet Gives Information.
+        <br />
+        <span class="font-bold bg-gradient-to-r from-primary via-primary to-accent bg-clip-text">
+          Nirnaya Gives Decisions.
+        </span>
+      </h1>
+
+      <!-- Supporting Text -->
+      <div class="max-w-2xl mx-auto mt-7">
+        <p class="text-lg sm:text-xl text-secondary font-normal leading-relaxed">
+          Most AI tools help you search. Most AI tools help you read.
+          <br class="hidden sm:inline" />
+          <span className="text-primary font-medium"> Nirnaya helps you decide.</span>
+        </p>
+        <p class="text-sm sm:text-base text-secondary/80 mt-2 max-w-xl mx-auto leading-relaxed">
+          A decision-first intelligence platform that understands your objective,
+          evaluates evidence, and recommends the best course of action.
+        </p>
+      </div>
+
+      <!-- Conversion Form -->
+      <div class="w-full max-w-md mx-auto mt-10">
+        <form id="hero-waitlist-form" onsubmit="handleWaitlistSubmit(event, 'hero-email', 'hero-feedback')" class="relative flex flex-col sm:flex-row gap-2.5">
+          <div class="relative flex-1">
+            <input
+              id="hero-email"
+              type="email"
+              required
+              placeholder="Enter your email"
+              class="w-full h-12 px-4 rounded-xl sm:rounded-full bg-white border border-border text-primary placeholder:text-secondary/60 text-sm focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all shadow-subtle"
+            />
+          </div>
+          <button
+            type="submit"
+            class="h-12 px-6 rounded-xl sm:rounded-full bg-primary hover:bg-black text-white text-sm font-medium transition-all duration-200 shadow-sm flex items-center justify-center gap-2 shrink-0 group"
+          >
+            <span>Request Early Access</span>
+            <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </form>
+        
+        <!-- CHANGE 7: Real Success Message Without Fake Queue -->
+        <div id="hero-feedback" class="hidden mt-4 p-4 rounded-2xl bg-white border border-border text-left shadow-card space-y-1.5">
+          <div class="flex items-center gap-2 text-emerald-600 font-semibold text-xs">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Welcome to the founding cohort.</span>
+          </div>
+          <p class="text-sm font-bold text-primary">You’re officially on the Nirnaya waitlist.</p>
+          <p class="text-xs text-secondary leading-relaxed">We’ll share product updates and early access opportunities as we build.</p>
+        </div>
+
+        <div class="flex items-center justify-center gap-2 mt-5 text-xs text-secondary">
+          <div class="flex -space-x-1.5 overflow-hidden">
+            <span class="inline-block h-5 w-5 rounded-full ring-2 ring-[#FAFAF7] bg-stone-300 text-[9px] font-semibold flex items-center justify-center text-stone-700">AK</span>
+            <span class="inline-block h-5 w-5 rounded-full ring-2 ring-[#FAFAF7] bg-slate-300 text-[9px] font-semibold flex items-center justify-center text-slate-700">SR</span>
+            <span class="inline-block h-5 w-5 rounded-full ring-2 ring-[#FAFAF7] bg-zinc-300 text-[9px] font-semibold flex items-center justify-center text-zinc-700">EL</span>
+          </div>
+          <span class="font-medium text-primary">Join the first 500 early users.</span>
+          <span class="text-secondary/50">•</span>
+          <span class="text-secondary/80">No spam. Ever.</span>
+        </div>
+
+        <!-- CHANGE 1: Example Question Pills -->
+        <div class="mt-8 pt-6 border-t border-border/60">
+          <span class="text-xs font-mono uppercase tracking-wider text-secondary/70 block mb-3">
+            Questions Nirnaya is built to answer:
+          </span>
+          <div class="flex flex-wrap items-center justify-center gap-2">
+            <span class="inline-flex items-center px-3.5 py-1.5 rounded-full bg-white border border-border text-xs text-secondary font-medium shadow-subtle hover:text-primary hover:border-secondary/40 transition-colors">
+              Should I learn Rust or Go?
+            </span>
+            <span class="inline-flex items-center px-3.5 py-1.5 rounded-full bg-white border border-border text-xs text-secondary font-medium shadow-subtle hover:text-primary hover:border-secondary/40 transition-colors">
+              Supabase or Firebase?
+            </span>
+            <span class="inline-flex items-center px-3.5 py-1.5 rounded-full bg-white border border-border text-xs text-secondary font-medium shadow-subtle hover:text-primary hover:border-secondary/40 transition-colors">
+              Should I hire a specialist?
+            </span>
+            <span class="inline-flex items-center px-3.5 py-1.5 rounded-full bg-white border border-border text-xs text-secondary font-medium shadow-subtle hover:text-primary hover:border-secondary/40 transition-colors">
+              Self-host LLMs or use APIs?
+            </span>
+            <span class="inline-flex items-center px-3.5 py-1.5 rounded-full bg-white border border-border text-xs text-secondary font-medium shadow-subtle hover:text-primary hover:border-secondary/40 transition-colors">
+              Best backend for AI SaaS?
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: CINEMATIC INTERLUDE (CHANGE 2 REWRITTEN) -->
+    <section id="philosophy" class="relative py-28 px-6 sm:px-8 bg-section border-y border-border select-none">
+      <div class="absolute inset-0 pointer-events-none opacity-40 paper-pattern"></div>
+      <div class="relative max-w-5xl mx-auto text-center z-10">
+        <span class="text-[11px] font-mono text-secondary/60 uppercase tracking-widest block mb-6">
+          [Premise // The Fundamental Flaw]
+        </span>
+
+        <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-8 md:gap-12 mb-12">
+          <span class="text-3xl sm:text-5xl md:text-6xl font-semibold tracking-tight-title text-primary/40">Search.</span>
+          <span class="text-3xl sm:text-5xl md:text-6xl font-semibold tracking-tight-title text-primary/60">Read.</span>
+          <span class="text-3xl sm:text-5xl md:text-6xl font-semibold tracking-tight-title text-primary/80">Compare.</span>
+          <span class="text-3xl sm:text-5xl md:text-6xl font-semibold tracking-tight-title text-primary">Repeat.</span>
+        </div>
+
+        <div class="max-w-3xl mx-auto pt-8 border-t border-border/80">
+          <p class="text-3xl sm:text-5xl font-bold tracking-tight-title text-primary leading-tight">
+            The internet was never designed for decisions.
+          </p>
+          <div class="text-base sm:text-xl text-secondary mt-5 max-w-xl mx-auto font-normal leading-relaxed space-y-1">
+            <p>The internet helps you find information.</p>
+            <p>It doesn&apos;t help you make the final choice.</p>
+            <p class="text-primary font-medium">That burden still falls on you.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: THE PROBLEM -->
+    <section class="py-28 px-6 sm:px-8 max-w-7xl mx-auto">
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-section border border-border text-xs font-mono uppercase text-secondary mb-4">
+          [The Paradox of Choice]
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-semibold tracking-tight-title text-primary leading-tight">
+          We Have More Information Than Ever.
+          <br />
+          <span class="text-secondary font-normal">
+            Yet Decision Making Is Harder Than Ever.
+          </span>
+        </h2>
+      </div>
+
+      <!-- 3 Problem Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div class="p-8 rounded-2xl bg-white border border-border shadow-card flex flex-col justify-between hover:shadow-card-hover transition-all">
+          <div>
+            <div class="flex items-center justify-between mb-8">
+              <div class="w-11 h-11 rounded-xl bg-section flex items-center justify-center text-primary">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                </svg>
+              </div>
+              <span class="font-mono text-xs text-secondary/60">01</span>
+            </div>
+            <h3 class="text-xl font-semibold text-primary tracking-tight">Search Engines</h3>
+            <p class="text-2xl font-serif italic text-accent font-medium mt-1 mb-4">Give links.</p>
+            <p class="text-sm text-secondary leading-relaxed mb-6 font-normal">
+              Ten blue links, sponsored listings, SEO-optimized articles, and endless tabs. You spend 45 minutes reading contradictions.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-border/70 flex items-center justify-between text-xs text-secondary">
+            <span>Bottleneck</span>
+            <span class="font-medium text-rose-600/90">You synthesize the data.</span>
+          </div>
+        </div>
+
+        <div class="p-8 rounded-2xl bg-white border border-border shadow-card flex flex-col justify-between hover:shadow-card-hover transition-all">
+          <div>
+            <div class="flex items-center justify-between mb-8">
+              <div class="w-11 h-11 rounded-xl bg-section flex items-center justify-center text-primary">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+              </div>
+              <span class="font-mono text-xs text-secondary/60">02</span>
+            </div>
+            <h3 class="text-xl font-semibold text-primary tracking-tight">AI Chatbots</h3>
+            <p class="text-2xl font-serif italic text-accent font-medium mt-1 mb-4">Give answers.</p>
+            <p class="text-sm text-secondary leading-relaxed mb-6 font-normal">
+              Multi-paragraph prose summaries that sound convincingly certain, yet hallucinate details and evade decisive commitment.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-border/70 flex items-center justify-between text-xs text-secondary">
+            <span>Bottleneck</span>
+            <span class="font-medium text-rose-600/90">You verify the truth.</span>
+          </div>
+        </div>
+
+        <div class="p-8 rounded-2xl bg-white border border-border shadow-card flex flex-col justify-between hover:shadow-card-hover transition-all">
+          <div>
+            <div class="flex items-center justify-between mb-8">
+              <div class="w-11 h-11 rounded-xl bg-section flex items-center justify-center text-primary">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                </svg>
+              </div>
+              <span class="font-mono text-xs text-secondary/60">03</span>
+            </div>
+            <h3 class="text-xl font-semibold text-primary tracking-tight">Research Platforms</h3>
+            <p class="text-2xl font-serif italic text-accent font-medium mt-1 mb-4">Give reports.</p>
+            <p class="text-sm text-secondary leading-relaxed mb-6 font-normal">
+              Comprehensive 40-page PDFs, matrices, and benchmark dashboards with zero stake in what choice you actually execute.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-border/70 flex items-center justify-between text-xs text-secondary">
+            <span>Bottleneck</span>
+            <span class="font-medium text-rose-600/90">You take the risk.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16 text-center">
+        <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-section border border-border shadow-subtle">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+          <p class="text-base sm:text-lg font-medium text-primary tracking-tight">
+            The final decision is still yours.
+          </p>
+          <span class="text-secondary text-sm hidden sm:inline">— until Nirnaya.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: SOLUTION & INTERACTIVE DECISION DEMO -->
+    <section class="py-28 px-6 sm:px-8 bg-section border-y border-border">
+      <div class="max-w-6xl mx-auto">
+        <div class="max-w-3xl mx-auto text-center mb-12">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-border text-xs font-mono uppercase text-secondary mb-4 shadow-subtle">
+            [The Solution]
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-semibold tracking-tight-title text-primary">
+            Nirnaya Was Built For The Last Step.
+          </h2>
+          <p class="text-secondary text-base sm:text-lg mt-3 max-w-xl mx-auto">
+            Watch how Nirnaya digests ambiguity, aggregates multi-domain evidence, and delivers an unequivocal verdict.
+          </p>
+        </div>
+
+        <!-- Interactive Scenario Selectors -->
+        <div class="flex flex-wrap items-center justify-center gap-2 mb-8">
+          <span class="text-xs font-mono text-secondary mr-2 uppercase tracking-wider hidden sm:inline">Try Scenario:</span>
+          <button onclick="switchScenario(0)" id="sc-btn-0" class="px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all bg-primary text-white shadow-sm">
+            Best backend for AI SaaS?
+          </button>
+          <button onclick="switchScenario(1)" id="sc-btn-1" class="px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all bg-white text-secondary hover:text-primary border border-border shadow-subtle">
+            Hire Senior Generalist vs Specialist?
+          </button>
+          <button onclick="switchScenario(2)" id="sc-btn-2" class="px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all bg-white text-secondary hover:text-primary border border-border shadow-subtle">
+            Self-host LLMs vs Managed Cloud APIs?
+          </button>
+        </div>
+
+        <!-- Console Card -->
+        <div class="relative max-w-4xl mx-auto rounded-3xl bg-white border border-border shadow-card overflow-hidden">
+          <div class="px-6 py-4 border-b border-border/80 bg-[#FAFAF7] flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-rose-400/40"></span>
+              <span class="w-3 h-3 rounded-full bg-amber-400/40"></span>
+              <span class="w-3 h-3 rounded-full bg-emerald-400/40"></span>
+              <span class="ml-3 font-mono text-xs text-secondary/80">nirnaya.engine // runtime v1.4</span>
+            </div>
+            <button onclick="replayCurrentScenario()" class="inline-flex items-center gap-1.5 text-xs text-secondary hover:text-primary font-mono transition-colors">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="23 4 23 10 17 10"></polyline>
+                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+              </svg>
+              <span>Re-evaluate</span>
+            </button>
+          </div>
+
+          <div class="p-6 sm:p-10 space-y-8">
+            <div>
+              <span class="text-xs font-mono uppercase tracking-wider text-secondary/70">User Question</span>
+              <div class="mt-2 p-4 rounded-xl bg-[#FAFAF7] border border-border flex items-center gap-3">
+                <svg class="w-5 h-5 text-accent shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <span id="demo-query" class="text-lg sm:text-xl font-medium text-primary tracking-tight">
+                  Best backend for AI SaaS?
+                </span>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <span class="text-xs font-mono uppercase tracking-wider text-secondary/70">Sequential Deliberation</span>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div class="p-3.5 rounded-xl border bg-blue-50/60 border-accent/40 text-primary">
+                  <div class="flex items-center gap-2 font-mono text-xs mb-1">
+                    <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+                    <span>01. Objective</span>
+                  </div>
+                  <p class="text-xs font-medium">Understanding objective...</p>
+                </div>
+                <div class="p-3.5 rounded-xl border bg-blue-50/60 border-accent/40 text-primary">
+                  <div class="flex items-center gap-2 font-mono text-xs mb-1">
+                    <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+                    <span>02. Evidence</span>
+                  </div>
+                  <p class="text-xs font-medium">Gathering evidence...</p>
+                </div>
+                <div class="p-3.5 rounded-xl border bg-blue-50/60 border-accent/40 text-primary">
+                  <div class="flex items-center gap-2 font-mono text-xs mb-1">
+                    <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+                    <span>03. Synthesis</span>
+                  </div>
+                  <p class="text-xs font-medium">Evaluating options...</p>
+                </div>
+              </div>
+            </div>
+
+            <div id="decision-result-card" class="rounded-2xl border-2 border-emerald-500/30 bg-emerald-50/25 p-6 sm:p-8 transition-all">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-border/80">
+                <div>
+                  <span class="text-xs font-mono uppercase tracking-wider text-emerald-800 font-semibold">Recommended Action</span>
+                  <div class="flex items-center gap-2.5 mt-1">
+                    <span id="result-winner" class="text-2xl sm:text-3xl font-bold text-primary tracking-tight">
+                      ✅ FastAPI
+                    </span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3 bg-white px-4 py-2.5 rounded-xl border border-border shadow-subtle">
+                  <div class="text-right">
+                    <span class="text-[10px] uppercase font-mono text-secondary block">Confidence</span>
+                    <span id="result-confidence" class="text-xl font-bold text-emerald-600">91%</span>
+                  </div>
+                  <div class="w-10 h-10 rounded-full border-2 border-emerald-500/20 flex items-center justify-center text-emerald-600">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                      <polyline points="17 6 23 6 23 12"></polyline>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-6">
+                <h4 class="text-xs font-mono uppercase tracking-wider text-secondary font-semibold mb-3">Why (Core Decision Rationale)</h4>
+                <ul id="result-why" class="space-y-2 text-sm text-primary">
+                  <li class="flex items-start gap-2.5"><span class="text-emerald-600 font-bold">•</span><span>Fast development cycle with native Pydantic validation</span></li>
+                  <li class="flex items-start gap-2.5"><span class="text-emerald-600 font-bold">•</span><span>Native Python runtime eliminates IPC overhead for AI libraries</span></li>
+                  <li class="flex items-start gap-2.5"><span class="text-emerald-600 font-bold">•</span><span>Lower complexity with async ASGI streaming support</span></li>
+                </ul>
+              </div>
+
+              <div class="mt-6 pt-5 border-t border-border/80 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 text-xs">
+                <div>
+                  <span class="font-mono text-secondary uppercase mr-2">Alternative:</span>
+                  <span id="result-alternative" class="font-medium text-primary">NestJS</span>
+                </div>
+                <span id="result-altnote" class="text-secondary/80 italic">Recommended only if the entire frontend team is TypeScript-exclusive.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 text-center">
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 text-xl sm:text-2xl font-serif text-primary">
+            <span>No essays.</span>
+            <span class="hidden sm:inline text-secondary/30">•</span>
+            <span>No information overload.</span>
+            <span class="hidden sm:inline text-secondary/30">•</span>
+            <span class="text-accent font-semibold italic">Just clarity.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: HOW IT WORKS (CHANGE 3 SIMPLIFIED COPY) -->
+    <section id="how-it-works" class="py-28 px-6 sm:px-8 max-w-7xl mx-auto">
+      <div class="max-w-3xl mx-auto text-center mb-20">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-section border border-border text-xs font-mono uppercase text-secondary mb-4">
+          [The Architecture]
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-semibold tracking-tight-title text-primary">
+          Understand Before Answering.
+        </h2>
+        <p class="text-base sm:text-lg text-secondary mt-4 max-w-2xl mx-auto font-normal leading-relaxed">
+          Traditional AI treats every query like an encyclopedia question. Nirnaya treats every query like a mission-critical decision.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- 01 Understand -->
+        <div class="p-7 rounded-2xl bg-white border border-border shadow-card hover:shadow-card-hover transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="font-mono text-xs font-bold text-accent px-2 py-1 rounded bg-blue-50 border border-blue-100">01</span>
+              <div class="w-9 h-9 rounded-lg bg-section flex items-center justify-center text-primary">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                </svg>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold text-primary tracking-tight">Understand</h3>
+            <p class="text-sm text-secondary leading-relaxed mt-2 font-normal">
+              Nirnaya identifies what you're actually trying to achieve before searching for answers.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-border/60 text-xs text-accent font-medium">
+            Goal & Context Isolation
+          </div>
+        </div>
+
+        <!-- 02 Research -->
+        <div class="p-7 rounded-2xl bg-white border border-border shadow-card hover:shadow-card-hover transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="font-mono text-xs font-bold text-accent px-2 py-1 rounded bg-blue-50 border border-blue-100">02</span>
+              <div class="w-9 h-9 rounded-lg bg-section flex items-center justify-center text-primary">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                  <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                  <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                </svg>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold text-primary tracking-tight">Research</h3>
+            <p class="text-sm text-secondary leading-relaxed mt-2 font-normal">
+              Nirnaya gathers evidence from multiple sources and removes noise.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-border/60 text-xs text-accent font-medium">
+            Multi-Source Synthesis
+          </div>
+        </div>
+
+        <!-- 03 Decide -->
+        <div class="p-7 rounded-2xl bg-white border border-border shadow-card hover:shadow-card-hover transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="font-mono text-xs font-bold text-accent px-2 py-1 rounded bg-blue-50 border border-blue-100">03</span>
+              <div class="w-9 h-9 rounded-lg bg-section flex items-center justify-center text-primary">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 11 12 14 22 4"></polyline>
+                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                </svg>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold text-primary tracking-tight">Decide</h3>
+            <p class="text-sm text-secondary leading-relaxed mt-2 font-normal">
+              Options are evaluated against your objective to find the best path forward.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-border/60 text-xs text-accent font-medium">
+            Objective Scoring Matrix
+          </div>
+        </div>
+
+        <!-- 04 Explain -->
+        <div class="p-7 rounded-2xl bg-white border border-border shadow-card hover:shadow-card-hover transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="font-mono text-xs font-bold text-accent px-2 py-1 rounded bg-blue-50 border border-blue-100">04</span>
+              <div class="w-9 h-9 rounded-lg bg-section flex items-center justify-center text-primary">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold text-primary tracking-tight">Explain</h3>
+            <p class="text-sm text-secondary leading-relaxed mt-2 font-normal">
+              Every recommendation includes confidence, reasoning, and risks.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-border/60 text-xs text-accent font-medium">
+            Risk & Confidence Rationale
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4B: WHO IS NIRNAYA FOR? (CHANGE 4 NEW SECTION) -->
+    <section id="audience" class="py-28 px-6 sm:px-8 max-w-7xl mx-auto border-t border-border">
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-section border border-border text-xs font-mono uppercase text-secondary mb-4">
+          [Target Audience]
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-semibold tracking-tight-title text-primary">
+          Who Is Nirnaya For?
+        </h2>
+        <p class="text-base sm:text-lg text-secondary mt-3 font-normal">
+          Built for people who make important decisions.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Founders -->
+        <div class="p-7 rounded-2xl bg-white border border-border shadow-card hover:shadow-card-hover transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-10 h-10 rounded-xl bg-section flex items-center justify-center text-primary font-bold">
+                🚀
+              </div>
+              <span class="text-[11px] font-mono text-secondary/60">01</span>
+            </div>
+            <h3 class="text-xl font-bold text-primary tracking-tight">Founders</h3>
+            <p class="text-sm text-secondary leading-relaxed mt-2.5 font-normal">
+              Make faster product, hiring, and strategic decisions.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-border/70 text-xs text-accent font-medium">
+            Strategy & Execution
+          </div>
+        </div>
+
+        <!-- Developers -->
+        <div class="p-7 rounded-2xl bg-white border border-border shadow-card hover:shadow-card-hover transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-10 h-10 rounded-xl bg-section flex items-center justify-center text-primary font-bold">
+                💻
+              </div>
+              <span class="text-[11px] font-mono text-secondary/60">02</span>
+            </div>
+            <h3 class="text-xl font-bold text-primary tracking-tight">Developers</h3>
+            <p class="text-sm text-secondary leading-relaxed mt-2.5 font-normal">
+              Choose technologies, tools, and architectures with confidence.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-border/70 text-xs text-accent font-medium">
+            Architecture & Stack
+          </div>
+        </div>
+
+        <!-- Researchers -->
+        <div class="p-7 rounded-2xl bg-white border border-border shadow-card hover:shadow-card-hover transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-10 h-10 rounded-xl bg-section flex items-center justify-center text-primary font-bold">
+                🔬
+              </div>
+              <span class="text-[11px] font-mono text-secondary/60">03</span>
+            </div>
+            <h3 class="text-xl font-bold text-primary tracking-tight">Researchers</h3>
+            <p class="text-sm text-secondary leading-relaxed mt-2.5 font-normal">
+              Turn information into conclusions instead of reports.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-border/70 text-xs text-accent font-medium">
+            Synthesis & Judgment
+          </div>
+        </div>
+
+        <!-- Operators -->
+        <div class="p-7 rounded-2xl bg-white border border-border shadow-card hover:shadow-card-hover transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-10 h-10 rounded-xl bg-section flex items-center justify-center text-primary font-bold">
+                ⚡
+              </div>
+              <span class="text-[11px] font-mono text-secondary/60">04</span>
+            </div>
+            <h3 class="text-xl font-bold text-primary tracking-tight">Operators</h3>
+            <p class="text-sm text-secondary leading-relaxed mt-2.5 font-normal">
+              Reduce decision fatigue and move faster.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-border/70 text-xs text-accent font-medium">
+            Velocity & Focus
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: VISION (CHANGE 12 WITH QENOVRA LABS) -->
+    <section id="vision" class="relative py-28 px-6 sm:px-8 bg-section border-t border-border text-center overflow-hidden">
+      <div class="relative max-w-5xl mx-auto z-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-border text-xs font-mono uppercase text-secondary mb-8 shadow-subtle">
+          [Vision Manifesto]
+        </div>
+
+        <div class="space-y-3">
+          <h2 class="text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tight-title text-primary/40 leading-tight">
+            The Future Isn’t Better Answers.
+          </h2>
+          <h2 class="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight-title text-accent leading-tight">
+            It’s Better Decisions.
+          </h2>
+        </div>
+
+        <div class="max-w-2xl mx-auto mt-12 space-y-6 text-base sm:text-xl text-primary font-normal leading-relaxed">
+          <p class="text-secondary">
+            Today the internet is optimized for information retrieval.
+            <br />
+            <span class="text-primary font-medium">Tomorrow it will be optimized for judgment.</span>
+          </p>
+          <p class="text-secondary text-sm sm:text-base">
+            We believe intelligence should help people choose what matters.
+            Nirnaya is our first step toward that future.
+          </p>
+
+          <!-- CHANGE 12: Qenovra AI Reference -->
+          <div class="pt-8 border-t border-border/60 max-w-xl mx-auto space-y-2">
+            <p class="text-sm sm:text-base text-primary font-medium">
+              Nirnaya is the first product from <span class="font-semibold text-primary">Qenovra AI</span>.
+            </p>
+            <p class="text-xs sm:text-sm text-secondary leading-relaxed">
+              A future-focused technology company building AI products, agents, infrastructure, and advanced technologies from India.
+            </p>
+            <div class="pt-3">
+              <span class="inline-block text-xs font-mono uppercase tracking-widest text-accent font-semibold px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-100 shadow-subtle">
+                India ka AI. Bharat ka Stack.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: WAITLIST (CHANGES 5, 6, 7, 13) -->
+    <section id="waitlist" class="py-28 px-6 sm:px-8 max-w-7xl mx-auto">
+      <div class="relative max-w-4xl mx-auto rounded-3xl bg-white border border-border shadow-card p-8 sm:p-14 md:p-16 overflow-hidden">
+        <div class="max-w-2xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-section border border-border text-xs font-mono uppercase text-secondary mb-6">
+            [Founding Cohort Access]
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-bold tracking-tight-title text-primary leading-tight">
+            Build Nirnaya With Us.
+          </h2>
+          <!-- CHANGE 5: New Waitlist Copy -->
+          <div class="mt-4 space-y-3 text-base sm:text-lg text-secondary leading-relaxed font-normal">
+            <p>
+              We're inviting our first 500 founding users.
+            </p>
+            <p class="text-sm sm:text-base">
+              These early members will help shape Nirnaya's decision engine, research workflows, and product direction.
+            </p>
+            <p class="text-sm sm:text-base text-primary/90 font-medium">
+              If you're tired of information overload and want better decisions, we'd love your feedback.
+            </p>
+          </div>
+        </div>
+
+        <!-- CHANGE 6: Updated Benefits Checklist -->
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="flex items-center gap-3 text-sm text-primary">
+            <div class="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-200">✓</div>
+            <span>Priority beta access</span>
+          </div>
+          <div class="flex items-center gap-3 text-sm text-primary">
+            <div class="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-200">✓</div>
+            <span>Direct access to product updates</span>
+          </div>
+          <div class="flex items-center gap-3 text-sm text-primary">
+            <div class="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-200">✓</div>
+            <span>Influence the roadmap</span>
+          </div>
+          <div class="flex items-center gap-3 text-sm text-primary">
+            <div class="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-200">✓</div>
+            <span>Early feature testing</span>
+          </div>
+          <div class="flex items-center gap-3 text-sm text-primary">
+            <div class="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-200">✓</div>
+            <span>Founding user status</span>
+          </div>
+        </div>
+
+        <!-- Conversion Form -->
+        <div class="mt-12 pt-8 border-t border-border">
+          <form id="waitlist-main-form" onsubmit="handleWaitlistSubmit(event, 'waitlist-email', 'waitlist-feedback')" class="max-w-xl">
+            <div class="flex flex-col sm:flex-row gap-3">
+              <input
+                id="waitlist-email"
+                type="email"
+                required
+                placeholder="Enter your email"
+                class="flex-1 h-13 px-4 py-3 rounded-full bg-white border border-border text-primary placeholder:text-secondary/60 text-sm focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all shadow-subtle"
+              />
+              <button
+                type="submit"
+                class="h-13 px-8 py-3 rounded-full bg-primary hover:bg-black text-white text-sm font-semibold transition-all duration-200 shadow-sm flex items-center justify-center gap-2 shrink-0 group"
+              >
+                <span>Join Waitlist</span>
+                <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+            <div class="flex items-center gap-2 mt-4 text-xs text-secondary">
+              <svg class="w-4 h-4 text-secondary/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              <span>No marketing junk. Strict data privacy. Unsubscribe anytime.</span>
+            </div>
+          </form>
+
+          <!-- CHANGE 7: Real Success Message Without Fake Queue -->
+          <div id="waitlist-feedback" class="hidden mt-6 p-6 rounded-2xl bg-section border border-border space-y-2">
+            <div class="flex items-center gap-2 text-emerald-600 font-semibold text-sm">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span>Welcome to the founding cohort.</span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold text-primary">
+              You’re officially on the Nirnaya waitlist.
+            </h3>
+            <p class="text-xs sm:text-sm text-secondary leading-relaxed">
+              We’ll share product updates and early access opportunities as we build.
+            </p>
+          </div>
+
+          <!-- CHANGE 13: Trust Statement -->
+          <div class="mt-8 pt-6 border-t border-border/60 text-center sm:text-left flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-secondary">
+            <div>
+              <span class="font-semibold text-primary block">Built in India.</span>
+              <span class="text-secondary/80">Designed for global decision makers.</span>
+            </div>
+            <div class="text-xs font-mono text-accent">
+              Qenovra AI • Bharat ka Stack
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: FAQ SECTION (CHANGE 8 NEW SECTION) -->
+    <section id="faq" class="py-28 px-6 sm:px-8 max-w-5xl mx-auto border-t border-border">
+      <div class="max-w-2xl mx-auto text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-section border border-border text-xs font-mono uppercase text-secondary mb-4">
+          [Answers & Clarity]
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-semibold tracking-tight-title text-primary">
+          Frequently Asked Questions
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        <!-- Q1 -->
+        <div class="rounded-2xl border border-border bg-white p-6 shadow-subtle">
+          <h3 class="text-base sm:text-lg font-semibold text-primary">What is Nirnaya AI?</h3>
+          <p class="mt-2 text-sm text-secondary leading-relaxed">
+            Nirnaya AI is a decision intelligence platform that helps people make better decisions using objective understanding, evidence, and reasoning.
+          </p>
+        </div>
+
+        <!-- Q2 -->
+        <div class="rounded-2xl border border-border bg-white p-6 shadow-subtle">
+          <h3 class="text-base sm:text-lg font-semibold text-primary">How is Nirnaya different from ChatGPT?</h3>
+          <p class="mt-2 text-sm text-secondary leading-relaxed">
+            Most AI tools focus on generating answers. Nirnaya focuses on helping users reach clear decisions backed by confidence and evidence.
+          </p>
+        </div>
+
+        <!-- Q3 -->
+        <div class="rounded-2xl border border-border bg-white p-6 shadow-subtle">
+          <h3 class="text-base sm:text-lg font-semibold text-primary">When will Nirnaya launch?</h3>
+          <p class="mt-2 text-sm text-secondary leading-relaxed">
+            We're currently building the first version and inviting early users to join the waitlist.
+          </p>
+        </div>
+
+        <!-- Q4 -->
+        <div class="rounded-2xl border border-border bg-white p-6 shadow-subtle">
+          <h3 class="text-base sm:text-lg font-semibold text-primary">Will Nirnaya be free?</h3>
+          <p class="mt-2 text-sm text-secondary leading-relaxed">
+            Yes. Early users will receive free access during the initial beta phase.
+          </p>
+        </div>
+
+        <!-- Q5 -->
+        <div class="rounded-2xl border border-border bg-white p-6 shadow-subtle">
+          <h3 class="text-base sm:text-lg font-semibold text-primary">Who is building Nirnaya?</h3>
+          <p class="mt-2 text-sm text-secondary leading-relaxed">
+            Nirnaya is being developed by Qenovra AI, a technology company focused on building AI products and advanced technologies from India.
+          </p>
+        </div>
+
+        <!-- Q6 -->
+        <div class="rounded-2xl border border-border bg-white p-6 shadow-subtle">
+          <h3 class="text-base sm:text-lg font-semibold text-primary">Why should I join the waitlist?</h3>
+          <p class="mt-2 text-sm text-secondary leading-relaxed">
+            You'll get early access, product updates, and the opportunity to help shape the future of Nirnaya.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (CHANGE 9 REPLACED FOOTER) -->
+  <footer class="border-t border-border bg-[#FAFAF7] py-16 px-6 sm:px-8 relative z-10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
+      <div class="space-y-2">
+        <div class="flex items-center gap-2.5">
+          <svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 8 L28 36" stroke="#111827" stroke-width="2.5" stroke-linecap="round" opacity="0.3" />
+            <path d="M8 22 L28 36" stroke="#111827" stroke-width="2.5" stroke-linecap="round" opacity="0.6" />
+            <path d="M8 36 L28 36" stroke="#111827" stroke-width="2.5" stroke-linecap="round" />
+            <path d="M10 8 L32 38" stroke="#2563EB" stroke-width="3.2" stroke-linecap="round" />
+            <rect x="32" y="8" width="7" height="32" rx="2" fill="#111827" />
+          </svg>
+          <span class="font-semibold tracking-tight text-primary text-base">Nirnaya AI</span>
+        </div>
+        <p class="text-sm font-medium text-primary">Answers less. Decides more.</p>
+        <p class="text-xs text-secondary">Understand. Decide. Act.</p>
+        <div class="pt-2 text-xs text-secondary">
+          <span class="font-semibold text-primary">Built by Qenovra AI</span>
+          <span class="mx-2">•</span>
+          <span class="font-medium text-accent">India ka AI. Bharat ka Stack.</span>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-6 sm:gap-10 text-xs sm:text-sm text-secondary">
+        <button onclick="openModal('privacy-modal')" class="hover:text-primary transition-colors underline-offset-4 hover:underline">Privacy Policy</button>
+        <button onclick="openModal('terms-modal')" class="hover:text-primary transition-colors underline-offset-4 hover:underline">Terms of Use</button>
+        <a href="mailto:hello.qenovra@gmail.com" class="hover:text-primary transition-colors underline-offset-4 hover:underline">
+          Contact: <span class="font-mono text-primary">hello.qenovra@gmail.com</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-border/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-secondary/70">
+      <p>© 2026 Qenovra AI. All rights reserved.</p>
+      <p class="font-mono text-[11px]">Designed for high-stakes clarity.</p>
+    </div>
+  </footer>
+
+  <!-- PRIVACY POLICY MODAL (CHANGE 10 WITH ALL 14 SECTIONS) -->
+  <div id="privacy-modal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 shadow-2xl border border-border">
+      <div class="flex items-center justify-between border-b border-border pb-4 mb-6">
+        <div>
+          <h3 class="text-xl font-bold text-primary">Privacy Policy</h3>
+          <p class="text-xs text-secondary">Qenovra AI • Nirnaya AI</p>
+        </div>
+        <button onclick="closeModal('privacy-modal')" class="text-secondary hover:text-primary font-bold text-lg">✕</button>
+      </div>
+      <div class="space-y-4 text-xs sm:text-sm text-secondary leading-relaxed">
+        <p><strong>Effective Date:</strong> September 27, 2026</p>
+        <h4 class="font-bold text-primary text-sm">1. Introduction</h4>
+        <p>Qenovra AI is committed to protecting your privacy while building AI products, agents, and infrastructure from India for global decision makers.</p>
+
+        <h4 class="font-bold text-primary text-sm">2. Information We Collect</h4>
+        <p>We collect your email address when registering for waitlist updates, voluntary feedback responses, and minimal technical diagnostics.</p>
+
+        <h4 class="font-bold text-primary text-sm">3. How We Use Information</h4>
+        <p>Information is used exclusively for cohort onboarding, issuing beta invitations, sending founder briefings, and protecting system integrity.</p>
+
+        <h4 class="font-bold text-primary text-sm">4. Waitlist Registration</h4>
+        <p>Submitting your email enrolls you into our founding cohort. We do not sell or monetize your data.</p>
+
+        <h4 class="font-bold text-primary text-sm">5. Cookies & Analytics</h4>
+        <p>We employ only strictly necessary session cookies and privacy-preserving metrics.</p>
+
+        <h4 class="font-bold text-primary text-sm">6. Third-Party Services</h4>
+        <p>We work with SOC2 Type II certified edge hosting and authenticated email dispatch APIs.</p>
+
+        <h4 class="font-bold text-primary text-sm">7. Data Storage</h4>
+        <p>Data is stored in secure, access-controlled enterprise databases.</p>
+
+        <h4 class="font-bold text-primary text-sm">8. Data Security</h4>
+        <p>We enforce TLS 1.3 in transit and AES-256 at rest.</p>
+
+        <h4 class="font-bold text-primary text-sm">9. Your Rights</h4>
+        <p>You have full rights to access, review, or correct your records.</p>
+
+        <h4 class="font-bold text-primary text-sm">10. Data Deletion</h4>
+        <p>To permanently delete your email, contact hello.qenovra@gmail.com with subject “Data Deletion Request.”</p>
+
+        <h4 class="font-bold text-primary text-sm">11. Children's Privacy</h4>
+        <p>Our platform is intended for professional use by individuals aged 18 and older.</p>
+
+        <h4 class="font-bold text-primary text-sm">12. Future Product Access</h4>
+        <p>Waitlist enrollment provides priority consideration for private beta cohorts.</p>
+
+        <h4 class="font-bold text-primary text-sm">13. Policy Updates</h4>
+        <p>We may update this policy periodically with an updated revision date.</p>
+
+        <h4 class="font-bold text-primary text-sm">14. Contact Information</h4>
+        <p>Qenovra AI — hello.qenovra@gmail.com</p>
+      </div>
+      <div class="mt-6 pt-4 border-t border-border text-right">
+        <button onclick="closeModal('privacy-modal')" class="px-5 py-2 rounded-full bg-primary text-white text-xs font-medium">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TERMS OF USE MODAL (CHANGE 11 WITH ALL 12 SECTIONS) -->
+  <div id="terms-modal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 shadow-2xl border border-border">
+      <div class="flex items-center justify-between border-b border-border pb-4 mb-6">
+        <div>
+          <h3 class="text-xl font-bold text-primary">Terms of Use</h3>
+          <p class="text-xs text-secondary">Qenovra AI • Nirnaya AI</p>
+        </div>
+        <button onclick="closeModal('terms-modal')" class="text-secondary hover:text-primary font-bold text-lg">✕</button>
+      </div>
+      <div class="space-y-4 text-xs sm:text-sm text-secondary leading-relaxed">
+        <p><strong>Effective Date:</strong> September 27, 2026</p>
+        <h4 class="font-bold text-primary text-sm">1. Acceptance of Terms</h4>
+        <p>By accessing nirnaya.ai or joining the waitlist, you agree to these Terms and our Privacy Policy.</p>
+
+        <h4 class="font-bold text-primary text-sm">2. Waitlist Participation</h4>
+        <p>Waitlist submission constitutes an expression of interest and does not establish a commercial contract.</p>
+
+        <h4 class="font-bold text-primary text-sm">3. Eligibility</h4>
+        <p>You must be at least 18 years old to participate.</p>
+
+        <h4 class="font-bold text-primary text-sm">4. User Responsibilities</h4>
+        <p>You agree not to submit deceptive information or probe our systems.</p>
+
+        <h4 class="font-bold text-primary text-sm">5. Intellectual Property</h4>
+        <p>All decision engines, trademarks, and interface designs belong exclusively to Qenovra AI.</p>
+
+        <h4 class="font-bold text-primary text-sm">6. No Guarantee of Access</h4>
+        <p>Waitlist placement does not guarantee beta admission.</p>
+
+        <h4 class="font-bold text-primary text-sm">7. Future Product Changes</h4>
+        <p>Previews and mockups represent concepts under active development.</p>
+
+        <h4 class="font-bold text-primary text-sm">8. Limitation of Liability</h4>
+        <p>Qenovra AI is not liable for indirect or consequential damages.</p>
+
+        <h4 class="font-bold text-primary text-sm">9. No Professional Advice Disclaimer</h4>
+        <p>Nirnaya AI outputs do NOT constitute certified legal, financial, or investment advice.</p>
+
+        <h4 class="font-bold text-primary text-sm">10. Termination</h4>
+        <p>We reserve the right to remove entries violating these Terms.</p>
+
+        <h4 class="font-bold text-primary text-sm">11. Governing Law</h4>
+        <p>These terms are governed by the laws of India.</p>
+
+        <h4 class="font-bold text-primary text-sm">12. Contact Information</h4>
+        <p>Qenovra AI — hello.qenovra@gmail.com</p>
+      </div>
+      <div class="mt-6 pt-4 border-t border-border text-right">
+        <button onclick="closeModal('terms-modal')" class="px-5 py-2 rounded-full bg-primary text-white text-xs font-medium">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    const ambientLight = document.getElementById("ambient-light");
+    window.addEventListener("mousemove", (e) => {
+      ambientLight.style.left = e.clientX + "px";
+      ambientLight.style.top = e.clientY + "px";
+    });
+
+    const scenarios = [
+      {
+        query: "Best backend for AI SaaS?",
+        winner: "✅ FastAPI",
+        confidence: "91%",
+        why: [
+          "Fast development cycle with native Pydantic validation",
+          "Native Python runtime eliminates IPC overhead for AI libraries",
+          "Lower complexity with async ASGI streaming support"
+        ],
+        alt: "NestJS",
+        altNote: "Recommended only if the entire frontend team is TypeScript-exclusive."
+      },
+      {
+        query: "Hire Senior Generalist vs Specialist for Seed Stage?",
+        winner: "✅ Senior Generalist",
+        confidence: "88%",
+        why: [
+          "Broad ownership across full product stack accelerates pivots",
+          "Lower early management overhead with independent autonomy",
+          "Avoids premature optimization of unvalidated architectural niches"
+        ],
+        alt: "AI Specialist Contractor",
+        altNote: "Use on a 3-month project basis for fine-tuning rather than equity hire."
+      },
+      {
+        query: "Self-host Open LLMs vs Managed Cloud APIs for v1?",
+        winner: "✅ Managed Cloud APIs",
+        confidence: "94%",
+        why: [
+          "Zero infrastructure maintenance allows 100% focus on user workflow",
+          "State-of-the-art reasoning quality exceeds small open weights",
+          "No idle GPU cluster cost while validating customer traction"
+        ],
+        alt: "vLLM on Modal / RunPod",
+        altNote: "Transition after reaching $25k MRR and stable inference demand."
+      }
+    ];
+
+    let currentScenarioIdx = 0;
+
+    function switchScenario(idx) {
+      currentScenarioIdx = idx;
+      for (let i = 0; i < 3; i++) {
+        const btn = document.getElementById(`sc-btn-${i}`);
+        if (i === idx) {
+          btn.className = "px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all bg-primary text-white shadow-sm";
+        } else {
+          btn.className = "px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all bg-white text-secondary hover:text-primary border border-border shadow-subtle";
+        }
+      }
+      playScenarioCycle(scenarios[idx]);
+    }
+
+    function replayCurrentScenario() {
+      playScenarioCycle(scenarios[currentScenarioIdx]);
+    }
+
+    function playScenarioCycle(sc) {
+      document.getElementById("demo-query").innerText = sc.query;
+      const card = document.getElementById("decision-result-card");
+      card.style.opacity = "0.3";
+      card.style.filter = "blur(4px)";
+
+      setTimeout(() => {
+        document.getElementById("result-winner").innerText = sc.winner;
+        document.getElementById("result-confidence").innerText = sc.confidence;
+        document.getElementById("result-alternative").innerText = sc.alt;
+        document.getElementById("result-altnote").innerText = sc.altNote;
+
+        const whyContainer = document.getElementById("result-why");
+        whyContainer.innerHTML = sc.why.map(item => `
+          <li class="flex items-start gap-2.5">
+            <span class="text-emerald-600 font-bold">•</span>
+            <span>${item}</span>
+          </li>
+        `).join("");
+
+        card.style.opacity = "1";
+        card.style.filter = "blur(0px)";
+      }, 350);
+    }
+
+    function handleWaitlistSubmit(event, inputId, feedbackId) {
+      event.preventDefault();
+      const input = document.getElementById(inputId);
+      const feedback = document.getElementById(feedbackId);
+      
+      if (input && input.value) {
+        if (typeof confetti === "function") {
+          confetti({
+            particleCount: 65,
+            spread: 70,
+            origin: { y: 0.65 },
+            colors: ["#2563EB", "#111827", "#059669"]
+          });
+        }
+        feedback.classList.remove("hidden");
+        input.value = "";
+      }
+    }
+
+    function openModal(id) {
+      document.getElementById(id).classList.remove("hidden");
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.add("hidden");
+    }
+  </script>
+</body>
+</html>
